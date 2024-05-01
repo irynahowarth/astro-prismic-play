@@ -1,0 +1,14 @@
+---
+import PrismicHtml from "../PrismicHtml.astro";
+import PrismicImage from "../PrismicImage.astro";
+import PrismicLink from "../PrismicLink.astro";
+
+const { primary } = Astro.props;
+---
+
+<section>
+  <PrismicHtml content={primary.heading} />
+  <PrismicHtml content={primary.body1} />
+  <PrismicLink link={primary.button_link} label={primary.button_text} />
+  <PrismicImage content={primary.image} />
+</section>

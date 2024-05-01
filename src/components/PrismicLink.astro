@@ -1,0 +1,9 @@
+---
+import * as prismic from "@prismicio/client";
+
+const { link, label } = Astro.props;
+
+const url = prismic.asLink(link);
+---
+
+<a href={url}>{label}</a>

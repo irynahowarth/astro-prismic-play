@@ -3,7 +3,7 @@ import * as prismic from "@prismicio/client";
 
 const { content } = Astro.props;
 
-const text = prismic.asText(content);
+const text = prismic.asHTML(content);
 ---
 
-{text}
+<div set:html={text} />

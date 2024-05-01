@@ -3,7 +3,7 @@ import * as prismic from "@prismicio/client";
 
 const { content } = Astro.props;
 
-const text = prismic.asText(content);
+const src = prismic.asImageSrc(content);
 ---
 
-{text}
+<img src={src} alt={content.alt} />
