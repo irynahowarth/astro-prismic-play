@@ -1,7 +1,12 @@
 ---
+import PrismicText from "@/components/PrismicText.astro";
 import MainLayout from "../layouts/MainLayout.astro";
+
+import { client } from "@/prismic";
+
+const { data } = await client.getSingle("homepage");
 ---
 
 <MainLayout>
-  <h1>Astro</h1>
+  <h1><PrismicText content={data.page_title} /></h1>
 </MainLayout>

@@ -1,0 +1,11 @@
+---
+import * as prismic from "@prismicio/client";
+import { client } from "@/prismic";
+
+const { content } = Astro.props;
+const { data } = await client.getSingle("homepage");
+
+const text = prismic.asText(content);
+---
+
+{text}
