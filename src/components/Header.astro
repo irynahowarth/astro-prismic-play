@@ -1,0 +1,21 @@
+---
+import { generateSetting } from "../prismic";
+
+const { title, navigation } = await generateSetting();
+---
+
+<header>
+  {title}
+  <nav>
+    <ul>
+      {
+        navigation.length &&
+          navigation.map(({ link, label }) => (
+            <li>
+              <a href={link.url}>{label}</a>
+            </li>
+          ))
+      }
+    </ul>
+  </nav>
+</header>

@@ -1,7 +1,9 @@
 ---
-import { generateMetadata } from "../prismic";
+import { generateSetting } from "../prismic";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 
-const { title, description, openGraph } = await generateMetadata();
+const { title, description, openGraph } = await generateSetting();
 ---
 
 <html lang="en">
@@ -15,8 +17,8 @@ const { title, description, openGraph } = await generateMetadata();
     <title>{title}</title>
   </head>
   <body>
-    <header>Header</header>
+    <Header />
     <slot />
-    <footer>Footer</footer>
+    <Footer />
   </body>
 </html>
