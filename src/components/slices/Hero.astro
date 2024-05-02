@@ -5,12 +5,23 @@ import PrismicHtml from "../PrismicHtml.astro";
 import PrismicImage from "../PrismicImage.astro";
 
 const { primary } = Astro.props;
+
+const components = {
+  heading1: ({ children }) =>
+    `<h1 class="text-5xl md:text-7xl font-bold leading-tight font-display text-slate-700 md:mb-8 mb-4 mt-12 first:mt-0 last:mb-0">${children}</h1>`,
+  heading2: ({ children }) =>
+    `<h2 class="md:mb-8 mb-4 mt-12 first:mt-0 last:mb-0">${children}</h2>`,
+  paragraph: ({ children }) =>
+    `<p class="text-2xl font-body font-normal leading-10 text-slate-600 mb-4 md:mb-8 max-w-md">
+      ${children}
+    </p>`,
+};
 ---
 
 <Bounded as="section">
   <div class="grid grid-cols-1 place-items-center text-center">
-    <PrismicHtml content={primary.heading} />
-    <PrismicHtml content={primary.body1} />
+    <PrismicHtml field={primary.heading} components={components} />
+    <PrismicHtml field={primary.body1} components={components} />
     <Button field={primary.button_link} className={"mb-8 md:mb-10"}>
       {primary.button_text}
     </Button>
