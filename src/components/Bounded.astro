@@ -1,0 +1,11 @@
+---
+import clsx from "clsx";
+
+const { as: Comp = "section", className } = Astro.props;
+---
+
+<Comp class={clsx("px-4 py-10 md:py-14 md:px-6 lg:py-16", className)}>
+  <div class="mx-auto w-full max-w-6xl">
+    <slot />
+  </div>
+</Comp>

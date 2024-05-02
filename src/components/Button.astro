@@ -1,0 +1,13 @@
+---
+import clsx from "clsx";
+import PrismicLink from "./PrismicLink.astro";
+
+const { field, className } = Astro.props;
+---
+
+<PrismicLink
+  link={field}
+  class={clsx("px-4 py-10 md:py-14 md:px-6 lg:py-16", className)}
+>
+  <slot />
+</PrismicLink>

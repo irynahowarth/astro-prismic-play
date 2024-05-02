@@ -2,7 +2,7 @@
 import * as prismic from "@prismicio/client";
 import clsx from "clsx";
 
-const { link, label, className } = Astro.props;
+const { link, className } = Astro.props;
 
 const url = prismic.asLink(link);
 ---
@@ -12,5 +12,5 @@ const url = prismic.asLink(link);
   class={clsx(
     "block w-fit bg-cyan-700 hover:bg-cyan-800 transition-colors duration-200 ease-in-out py-3 px-12 rounded-full text-white font-display font-bold text-base tracking-wider",
     className
-  )}>{label}</a
+  )}><slot /></a
 >
