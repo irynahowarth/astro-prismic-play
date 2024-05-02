@@ -1,9 +1,9 @@
 ---
 import * as prismic from "@prismicio/client";
 
-const { content } = Astro.props;
+const { content, className } = Astro.props;
 
 const src = prismic.asImageSrc(content);
 ---
 
-<img src={src} alt={content.alt} />
+<img src={src} alt={content.alt} class={className} />

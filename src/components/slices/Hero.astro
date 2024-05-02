@@ -10,5 +10,8 @@ const { primary } = Astro.props;
   <PrismicHtml content={primary.heading} />
   <PrismicHtml content={primary.body1} />
   <PrismicLink link={primary.button_link} label={primary.button_text} />
-  <PrismicImage content={primary.image} />
+  <PrismicImage
+    content={primary.image}
+    className="drop-shadow-xl max-w-4xl w-full"
+  />
 </section>
