@@ -10,12 +10,14 @@ export const client = prismic.createClient(repositoryName, {
       type: 'homepage',
       path: '/',
     },
+    {
+      type: 'testimonial',
+      path: '/:uid',
+    },
   ],
 })
 
-export async function getPage(uuid: string) {
-  return client.getByUID('page', uuid, { pageSize: 1, page: 1 });
-}
+
 
 export async function generateSetting() {
   const { data } = await client.getSingle("settings");

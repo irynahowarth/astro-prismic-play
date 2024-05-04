@@ -1,0 +1,62 @@
+---
+import Bounded from "@/components/Bounded.astro";
+import PrismicHtml from "@/components/PrismicHtml.astro";
+import PrismicImage from "@/components/PrismicImage.astro";
+import { client } from "@/prismic";
+import { isFilled } from "@prismicio/client";
+
+const { primary, items } = Astro.props;
+
+const testimonials = await Promise.all(
+  items.map((item) => {
+    if (
+      isFilled.contentRelationship(item.testimonial) &&
+      item.testimonial.uid
+    ) {
+      return client.getByUID("testimonial", item.testimonial.uid);
+    }
+  })
+);
+
+const components = {
+  heading2: ({ children }) =>
+    `<h2 class="leading-tight tracking-light font-display text-slate-700 text-3xl md:text-4xl text-center mb-9 font-semibold" >${children}</h2>`,
+  paragraph: ({ children }) =>
+    `<p class="text-xl md:text-2xl font-normal font-body text-slate-600 mb-8">
+      ${children}
+    </p>`,
+};
+---
+
+<Bounded>
+  <PrismicHtml field={primary.heading} components={components} />
+  <div class="grid lg:grid-cols-3 grid-cols-1 gap-8">
+    {
+      testimonials.map(
+        (item) =>
+          item && (
+            <div class="border bg-white shadow-lg rounded-lg px-8 md:px-14 py-10 md:py-16 grid content-between">
+              <PrismicHtml components={components} field={item?.data.quote} />
+              <div class="flex items-center">
+                {item.data.avatar && (
+                  <PrismicImage
+                    content={item?.data.avatar}
+                    height={56}
+                    width={56}
+                    class="rounded-full mr-4"
+                    imgixParams={{ ar: "1:1", fit: "crop" }}
+                  />
+                )}
+                <div>
+                  <p class="text-base font-medium tetx-slate-700">
+                    {item.data.name}
+                  </p>
+                  <p class="text-base text-slate-600">{item.data.job_title}</p>
+                </div>
+              </div>
+            </div>
+          )
+      )
+    }
+  </div>
+</Bounded>
