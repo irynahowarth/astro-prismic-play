@@ -1,21 +1,27 @@
 ---
 import { generateSetting } from "../prismic";
+import Bounded from "@/components/Bounded.astro";
+import Logo from "@/components/Logo.astro";
 
 const { title, navigation } = await generateSetting();
 ---
 
-<header>
-  {title}
-  <nav>
-    <ul>
-      {
-        navigation.length &&
-          navigation.map(({ link, label }) => (
-            <li>
-              <a href={link.url}>{label}</a>
-            </li>
-          ))
-      }
-    </ul>
-  </nav>
-</header>
+<Bounded as="header" className="py-4 md:py-6 lg:py-8">
+  <div class="flex gap-4 items-center justify-between sm:flex-row flex-col">
+    <a href="/"><Logo /></a>
+    <nav>
+      <ul class="flex">
+        {
+          navigation.length &&
+            navigation.map(({ link, label }) => (
+              <li>
+                <a href={link.url} class="p-3">
+                  {label}
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+    </nav>
+  </div>
+</Bounded>
