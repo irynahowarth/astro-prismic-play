@@ -1,16 +1,14 @@
 ---
-import Bounded from "../Bounded.astro";
-import Button from "../Button.astro";
-import PrismicHtml from "../PrismicHtml.astro";
-import PrismicImage from "../PrismicImage.astro";
+import Bounded from "@/components/Bounded.astro";
+import Button from "@/components/Button.astro";
+import PrismicHtml from "@/components/PrismicHtml.astro";
+import PrismicImage from "@/components/PrismicImage.astro";
 
 const { primary } = Astro.props;
 
 const components = {
   heading1: ({ children }) =>
     `<h1 class="text-5xl md:text-7xl font-bold leading-tight font-display text-slate-700 md:mb-8 mb-4 mt-12 first:mt-0 last:mb-0">${children}</h1>`,
-  heading2: ({ children }) =>
-    `<h2 class="md:mb-8 mb-4 mt-12 first:mt-0 last:mb-0">${children}</h2>`,
   paragraph: ({ children }) =>
     `<p class="text-2xl font-body font-normal leading-10 text-slate-600 mb-4 md:mb-8 max-w-md">
       ${children}

@@ -10,17 +10,18 @@ const { primary, items } = Astro.props;
 
 const components = {
   heading2: ({ children }) =>
-    `<h2 class="text-5xl md:text-7xl font-bold leading-tight font-display text-slate-700 md:mb-8 mb-4 mt-12 first:mt-0 last:mb-0">${children}</h2>`,
+    `<h2 class="font-bold leading-tight tracking-light font-display text-slate-700 md:mb-8 text-3xl md:text-4xl text-center mb-12" >${children}</h2>`,
   heading3: ({ children }) =>
-    `<h3 class="md:mb-8 mb-4 mt-12 first:mt-0 last:mb-0">${children}</h3>`,
+    `<h3 class="leading-tight tracking-light font-display text-slate-700 text-2xl md:text-3xl sm:text-left text-center mb-3 font-medium">${children}</h3>`,
   paragraph: ({ children }) =>
-    `<p class="text-2xl font-body font-normal leading-10 text-slate-600 mb-4 md:mb-8 max-w-md">
+  `<p className="font-medium font-body text-base text-slate-600 sm:text-left text-center">
       ${children}
     </p>`,
 };
 
-const Calendar = CalendarIcon;
-const Bargraph = BargraphIcon;
+
+
+
 const Icon = (item) => {
   switch (item) {
     case "calendar": {
@@ -45,7 +46,7 @@ const Icon = (item) => {
     class="grid sm:grid-cols-2 lg:grid-cols-4 max-w-5xl gap-x-8 gap-y-12 mx-auto sm:place-items-start place-items-center"
   >
     {
-      items.map((item, index) => (
+      items.map((item) => (
         <div
           class="max-w-xs grid sm:place-items-start place-items-center"
         >
