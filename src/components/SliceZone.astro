@@ -1,5 +1,8 @@
 ---
+import type { Code, Debug } from "astro:components";
+import Features from "./slices/Features.astro";
 import Hero from "./slices/Hero.astro";
+import { slide } from "astro:transitions";
 
 const { slices } = Astro.props;
 ---
@@ -9,6 +12,9 @@ const { slices } = Astro.props;
     switch (slice.slice_type) {
       case "hero": {
         return <Hero {...slice} />;
+      }
+      case "features": {
+        return <Features {...slice} />;
       }
     }
   })

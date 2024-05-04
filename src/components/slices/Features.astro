@@ -1,0 +1,59 @@
+---
+import Bounded from "@/components/Bounded.astro";
+import CalendarIcon from "@/components/icons/CalendarIcon.astro";
+import BargraphIcon from "@/components/icons/BargraphIcon.astro";
+import CloverIcon from "@/components/icons/CloverIcon.astro";
+import HourglassIcon from "@/components/icons/HourglassIcon.astro";
+import PrismicHtml from "@/components/PrismicHtml.astro";
+
+const { primary, items } = Astro.props;
+
+const components = {
+  heading2: ({ children }) =>
+    `<h2 class="text-5xl md:text-7xl font-bold leading-tight font-display text-slate-700 md:mb-8 mb-4 mt-12 first:mt-0 last:mb-0">${children}</h2>`,
+  heading3: ({ children }) =>
+    `<h3 class="md:mb-8 mb-4 mt-12 first:mt-0 last:mb-0">${children}</h3>`,
+  paragraph: ({ children }) =>
+    `<p class="text-2xl font-body font-normal leading-10 text-slate-600 mb-4 md:mb-8 max-w-md">
+      ${children}
+    </p>`,
+};
+
+const Calendar = CalendarIcon;
+const Bargraph = BargraphIcon;
+const Icon = (item) => {
+  switch (item) {
+    case "calendar": {
+      return CalendarIcon;
+    }
+    case "bargraph": {
+      return BargraphIcon;
+    }
+    case "clover": {
+      return CloverIcon;
+    }
+    case "hourglass": {
+      return HourglassIcon;
+    }
+  }
+};
+---
+
+<Bounded>
+  <PrismicHtml field={primary.heading} components={components} />
+  <div
+    class="grid sm:grid-cols-2 lg:grid-cols-4 max-w-5xl gap-x-8 gap-y-12 mx-auto sm:place-items-start place-items-center"
+  >
+    {
+      items.map((item, index) => (
+        <div
+          class="max-w-xs grid sm:place-items-start place-items-center"
+        >
+          <>{item.icon && <div class="mb-5">{<Icon(item.icon) />}</div>}</>
+          <PrismicHtml field={item.title} components={components} />
+          <PrismicHtml field={item.description} components={components} />
+        </div>
+      ))
+    }
+  </div>
+</Bounded>
