@@ -2,6 +2,7 @@
 import Features from "./slices/Features.astro";
 import Hero from "./slices/Hero.astro";
 import Testimonials from "./slices/Testimonials.astro";
+import TextWithImage from "./slices/TextWithImage.astro";
 
 const { slices } = Astro.props;
 ---
@@ -17,6 +18,9 @@ const { slices } = Astro.props;
       }
       case "testimonials": {
         return <Testimonials {...slice} />;
+      }
+      case "textwithimage": {
+        return <TextWithImage {...slice} />;
       }
     }
   })
