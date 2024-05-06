@@ -1,0 +1,19 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { client } from "@/prismic";
+import SliceZone from "@/components/SliceZone.astro";
+
+const { slug } = Astro.params;
+
+if (slug === undefined) {
+  throw new Error("slug is required!");
+}
+
+const { data } = await client
+  .getByUID("page", slug)
+  .catch(() => Astro.redirect("/404"));
+---
+
+<MainLayout>
+  {data.body && <SliceZone slices={data.body} />}
+</MainLayout>
