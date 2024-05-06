@@ -2,6 +2,8 @@
 import { generateSetting } from "../prismic";
 import Bounded from "@/components/Bounded.astro";
 import Logo from "@/components/Logo.astro";
+import PrismicLink from "./PrismicLink.astro";
+import { navigate } from "astro:transitions/client";
 
 const { title, navigation } = await generateSetting();
 ---
@@ -15,9 +17,9 @@ const { title, navigation } = await generateSetting();
           navigation.length &&
             navigation.map(({ link, label }) => (
               <li>
-                <a href={link.url} class="p-3">
+                <PrismicLink link={link} className="p-3">
                   {label}
-                </a>
+                </PrismicLink>
               </li>
             ))
         }
