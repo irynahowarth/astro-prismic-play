@@ -10,14 +10,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
+    "@astrojs/check": "^0.6.0",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/nunito": "^5.0.18",
     "@fontsource/nunito-sans": "^5.0.13",
     "@prismicio/client": "^7.4.1",
     "@prismicio/helpers": "^2.3.9",
     "@prismicio/react": "^2.7.4",
-    "astro": "^4.7.0",
+    "astro": "^4.8.3",
     "clsx": "^2.1.1",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
